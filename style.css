@@ -84,9 +84,9 @@ img{max-width:100%;height:auto;display:block}
 nav.haupt{display:flex;flex-wrap:wrap;gap:6px 30px;font-size:16px}
 nav.haupt a{
   color:var(--nacht);text-decoration:none;padding:5px 0;
-  border-bottom:2px solid transparent;
+  border-bottom:2px solid var(--linie);
 }
-nav.haupt a:hover{border-bottom-color:var(--linie)}
+nav.haupt a:hover{border-bottom-color:var(--emaille)}
 nav.haupt a[aria-current="page"]{
   color:var(--signalrot);border-bottom-color:var(--signalrot);font-weight:600;
 }
