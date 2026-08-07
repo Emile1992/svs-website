@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+# Vorsichtshalber gesperrt, falls versehentlich mit hochgeladen – gehören
+# ohnehin nicht auf den Server:
+Disallow: /entwurf.html
+Disallow: /material/
+
+# PRÜFEN: Platzhalter-Domain durch die tatsächliche Adresse ersetzen, sobald diese feststeht
+Sitemap: https://www.svs-schwanheim.de/sitemap.xml

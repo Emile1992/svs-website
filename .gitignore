@@ -1,0 +1,12 @@
+# Vereins-Quelldokumente (enthalten u. a. personenbezogene Daten aus dem
+# Registerauszug) und der ursprüngliche Gestaltungsentwurf – kein Teil
+# der ausgelieferten Seite.
+material/
+entwurf.html
+
+# Lokale Arbeitsnotizen und Werkzeug-Konfiguration
+*.md
+.claude/
+
+# macOS
+.DS_Store

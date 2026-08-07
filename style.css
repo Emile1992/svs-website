@@ -1,0 +1,483 @@
+/* ------------------------------------------------------------------
+   Schienenverkehrsfreunde Ffm.-Schwanheim e. V.
+   Gemeinsames Stylesheet für alle Seiten.
+
+   Leitidee: die Sachlichkeit alter Bahn-Drucksachen. Gesetzt wird mit
+   Haarlinien, Weißraum und tabellarischen Ziffern statt mit Kästchen
+   und Schatten. Keine Schriftgröße unter 16 px.
+   ------------------------------------------------------------------ */
+
+:root{
+  --emaille:#1d4e79;      /* Bahnhofsschild-Blau, Hauptfarbe */
+  --nacht:#132f47;        /* dunkles Blau: Überschriften, Fußbereich */
+  --papier:#f6f4ef;       /* Seitenhintergrund */
+  --signalrot:#b0362c;    /* Akzent, sehr sparsam einsetzen */
+  --dampfgrau:#5b6169;    /* Nebentext */
+  --tinte:#22262b;        /* Fließtext */
+  --linie:#d8d4ca;        /* Trennlinien, Rahmen */
+
+  --display:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --grotesk:"Segoe UI",-apple-system,system-ui,Roboto,Arial,sans-serif;
+  --tafel:Consolas,Menlo,"DejaVu Sans Mono","Courier New",monospace;
+
+  --satz:1120px;          /* Satzspiegel */
+  --rand:32px;            /* Seitenrand */
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--grotesk);
+  font-size:18px;
+  line-height:1.68;
+  color:var(--tinte);
+  background:var(--papier);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+a{color:var(--emaille);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--nacht)}
+a:focus-visible{outline:3px solid var(--signalrot);outline-offset:3px}
+
+img{max-width:100%;height:auto;display:block}
+
+.rahmen{max-width:var(--satz);margin:0 auto;padding:0 var(--rand)}
+
+/* Nur für Screenreader */
+.nur-vorlesen{
+  position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+
+/* Sprungmarke zum Inhalt */
+.sprungmarke{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--nacht);color:#fff;padding:14px 22px;font-weight:600;
+}
+.sprungmarke:focus{left:0}
+
+/* ------------------------------------------------------------------
+   Briefkopf: die Lok sitzt rechtsbündig über einer durchgehenden Linie
+   ------------------------------------------------------------------ */
+
+.briefkopf{padding-top:34px}
+.briefkopf .innen{display:flex;justify-content:flex-end;align-items:flex-end}
+.briefkopf .lok{width:190px;margin-bottom:-1px}
+.briefkopf .linie{border-bottom:2px solid var(--tinte)}
+
+.kopfzeile{
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:14px 40px;padding-top:22px;
+}
+.wortmarke{
+  font-family:var(--display);font-size:23px;font-weight:700;line-height:1.25;
+  color:var(--nacht);text-decoration:none;
+}
+.wortmarke span{
+  display:block;font-family:var(--grotesk);font-weight:400;font-size:16px;
+  letter-spacing:.07em;color:var(--dampfgrau);margin-top:6px;
+}
+
+nav.haupt{display:flex;flex-wrap:wrap;gap:6px 30px;font-size:16px}
+nav.haupt a{
+  color:var(--nacht);text-decoration:none;padding:5px 0;
+  border-bottom:2px solid transparent;
+}
+nav.haupt a:hover{border-bottom-color:var(--linie)}
+nav.haupt a[aria-current="page"]{
+  color:var(--signalrot);border-bottom-color:var(--signalrot);font-weight:600;
+}
+
+/* ------------------------------------------------------------------
+   Überschriften und Abschnitte
+   ------------------------------------------------------------------ */
+
+h1,h2,h3{font-family:var(--display);color:var(--nacht);font-weight:700}
+
+h1{
+  font-size:clamp(34px,4.8vw,52px);line-height:1.1;letter-spacing:-.012em;
+  max-width:19ch;
+}
+h2{font-size:clamp(26px,2.8vw,33px);line-height:1.18;letter-spacing:-.006em}
+h3{font-size:20px;line-height:1.3}
+
+/* Kennzeichnung eines Abschnitts – wie die Spaltenköpfe im Kursbuch */
+.marke{
+  display:flex;align-items:center;gap:14px;
+  font-size:16px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--emaille);font-weight:600;
+}
+.marke::before{
+  content:"";width:26px;height:2px;background:var(--emaille);flex:none;
+}
+.marke.hell{color:#9fb4c6}
+.marke.hell::before{background:#9fb4c6}
+
+.held{padding:82px 0 74px}
+.held .marke{margin-bottom:20px}
+.held h1{margin-bottom:26px}
+.held .satz{max-width:56ch;font-size:21px;line-height:1.6;color:#3a3f46}
+
+.seitenkopf{padding:64px 0 0}
+.seitenkopf .marke{margin-bottom:18px}
+.seitenkopf h1{max-width:24ch}
+.seitenkopf .satz{max-width:60ch;margin-top:20px;font-size:19px;color:var(--dampfgrau)}
+
+.abschnitt{padding:74px 0}
+.abschnitt + .abschnitt{padding-top:0}
+.abschnittkopf{margin-bottom:34px}
+.abschnittkopf .marke{margin-bottom:16px}
+.abschnittkopf .satz{color:var(--dampfgrau);margin-top:12px;max-width:60ch}
+
+/* Waagerechte Haarlinie als Gliederung */
+.trennlinie{border:0;border-top:1px solid var(--linie);margin:0}
+
+/* ------------------------------------------------------------------
+   Schaltflächen
+   ------------------------------------------------------------------ */
+
+.knopf{
+  display:inline-block;text-decoration:none;font-weight:600;font-size:17px;
+  padding:15px 30px;border:2px solid transparent;transition:background .12s,color .12s;
+}
+.knopf.blau{background:var(--emaille);color:#fff}
+.knopf.blau:hover{background:var(--nacht);color:#fff}
+.knopf.rand{border-color:var(--nacht);color:var(--nacht)}
+.knopf.rand:hover{background:var(--nacht);color:#fff}
+.knopf.rot{background:var(--signalrot);color:#fff}
+.knopf.rot:hover{background:#8f2b22;color:#fff}
+.aktionen{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px}
+
+/* Weiterführender Verweis */
+.weiter{
+  display:inline-block;font-weight:600;font-size:17px;text-decoration:none;
+  color:var(--emaille);border-bottom:2px solid var(--linie);padding-bottom:3px;
+}
+.weiter:hover{border-bottom-color:var(--emaille)}
+.weiter::after{content:" →"}
+
+/* ------------------------------------------------------------------
+   Emailleschild – Zuglaufschild für das Ziel der Fahrt
+   ------------------------------------------------------------------ */
+
+.schild{
+  position:relative;background:var(--emaille);color:#fff;
+  padding:44px 46px;overflow:hidden;
+}
+/* umlaufende Keillinie, wie sie emaillierte Schilder tragen */
+.schild::before{
+  content:"";position:absolute;inset:10px;
+  border:2px solid rgba(255,255,255,.5);pointer-events:none;
+}
+/* die vier Schraublöcher */
+.schild::after{
+  content:"";position:absolute;inset:10px;pointer-events:none;
+  background:
+    radial-gradient(circle at 16px 16px,rgba(255,255,255,.42) 0 3px,transparent 3.6px),
+    radial-gradient(circle at calc(100% - 16px) 16px,rgba(255,255,255,.42) 0 3px,transparent 3.6px),
+    radial-gradient(circle at 16px calc(100% - 16px),rgba(255,255,255,.42) 0 3px,transparent 3.6px),
+    radial-gradient(circle at calc(100% - 16px) calc(100% - 16px),rgba(255,255,255,.42) 0 3px,transparent 3.6px);
+}
+.schild .richtung{
+  font-size:16px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);margin-bottom:14px;
+}
+.schild .ort{
+  font-family:var(--display);font-weight:700;color:#fff;
+  font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:.01em;
+}
+.schild .wann{
+  margin-top:16px;font-size:18px;color:rgba(255,255,255,.9);
+  font-family:var(--tafel);font-variant-numeric:tabular-nums;
+}
+
+/* ------------------------------------------------------------------
+   Streckenband – der Fahrplan als Liniendiagramm
+   ------------------------------------------------------------------ */
+
+.fahrtabschnitt + .fahrtabschnitt{margin-top:46px}
+.fahrtabschnitt h3{
+  font-family:var(--grotesk);font-size:16px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--dampfgrau);
+  margin-bottom:24px;
+}
+
+.streckenband{list-style:none}
+.streckenband li{
+  display:grid;grid-template-columns:72px 34px 1fr;
+  column-gap:18px;align-items:stretch;
+}
+.streckenband .zeit{
+  font-family:var(--tafel);font-size:17px;font-weight:700;color:var(--nacht);
+  font-variant-numeric:tabular-nums;text-align:right;padding-top:1px;
+}
+.streckenband .spur{position:relative;display:block}
+/* durchgehende Strecke */
+.streckenband .spur::before{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);
+  top:0;bottom:0;width:2px;background:var(--linie);
+}
+.streckenband li:first-child .spur::before{top:12px}
+.streckenband li:last-child .spur::before{bottom:calc(100% - 12px)}
+/* Haltepunkt */
+.streckenband .knoten{
+  position:absolute;left:50%;top:12px;transform:translate(-50%,-50%);
+  width:15px;height:15px;border-radius:50%;
+  background:var(--papier);border:3px solid var(--emaille);
+}
+.streckenband .halt.ende .knoten{background:var(--emaille)}
+.streckenband .ort{padding-bottom:30px;font-size:18px;color:var(--nacht)}
+.streckenband .halt:last-child .ort{padding-bottom:0}
+.streckenband .zwischenhalt .ort{
+  color:var(--dampfgrau);font-size:17px;padding-bottom:30px;
+}
+
+/* ------------------------------------------------------------------
+   Angaben zur Fahrt: Preise und Anmeldung
+   ------------------------------------------------------------------ */
+
+.angaben{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:32px;border-top:1px solid var(--linie);padding-top:30px;margin-top:56px;
+}
+.angaben .posten .bezeichnung{
+  font-size:16px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--dampfgrau);margin-bottom:8px;
+}
+.angaben .posten .wert{
+  font-family:var(--tafel);font-size:19px;font-weight:700;color:var(--nacht);
+  font-variant-numeric:tabular-nums;
+}
+.angaben .posten .zusatz{font-size:17px;color:var(--dampfgrau);margin-top:6px}
+
+.anmeldung{
+  margin-top:44px;border-left:3px solid var(--signalrot);
+  padding:6px 0 6px 26px;max-width:66ch;
+}
+.anmeldung .frist{
+  font-size:16px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--signalrot);font-weight:700;margin-bottom:10px;
+}
+
+/* ------------------------------------------------------------------
+   Abfahrtstafel – die Termine
+   ------------------------------------------------------------------ */
+
+.tafel{border-top:2px solid var(--nacht)}
+.tafel .kopf{
+  display:grid;grid-template-columns:150px 1fr 150px;gap:28px;
+  padding:12px 0;border-bottom:1px solid var(--linie);
+  font-size:16px;letter-spacing:.15em;text-transform:uppercase;color:var(--dampfgrau);
+}
+.tafel .reihe{
+  display:grid;grid-template-columns:150px 1fr 150px;gap:10px 28px;
+  padding:26px 0;border-bottom:1px solid var(--linie);align-items:baseline;
+}
+.tafel .datum{
+  font-family:var(--tafel);font-size:18px;font-weight:700;color:var(--nacht);
+  font-variant-numeric:tabular-nums;
+}
+.tafel .datum .jahr{display:block;font-size:16px;font-weight:400;color:var(--dampfgrau);margin-top:3px}
+.tafel .titel{font-size:19px;font-weight:600;color:var(--nacht)}
+.tafel .naeheres{color:var(--dampfgrau);font-size:17px;margin-top:6px;max-width:62ch}
+.tafel .naeheres .ort{color:var(--tinte)}
+.tafel .verweis{text-align:right;font-size:17px}
+.tafel .verweis a{text-decoration:none;border-bottom:2px solid var(--linie);padding-bottom:2px}
+.tafel .verweis a:hover{border-bottom-color:var(--emaille)}
+.nachsatz{margin-top:28px;font-size:17px;color:var(--dampfgrau);max-width:70ch}
+
+/* Platzhalter für noch fehlende Angaben */
+.platzhalter{
+  display:inline-block;border:1.5px dashed var(--dampfgrau);color:var(--dampfgrau);
+  font-size:16px;letter-spacing:.06em;padding:3px 12px;
+}
+
+/* ------------------------------------------------------------------
+   Anrisse auf der Startseite
+   ------------------------------------------------------------------ */
+
+.anrisse{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 36px;
+}
+.anriss{
+  border-top:2px solid var(--nacht);padding:22px 0 8px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.anriss .nummer{
+  font-family:var(--tafel);font-size:16px;color:var(--dampfgrau);
+  letter-spacing:.1em;
+}
+.anriss h3{margin-bottom:2px}
+.anriss p{font-size:17px;color:var(--tinte)}
+.anriss .weiter{margin-top:auto;padding-top:14px;align-self:flex-start}
+
+/* Kleine Abfahrtstafel im Anriss */
+.kurztafel{display:flex;flex-direction:column;gap:10px;font-size:17px}
+.kurztafel .tag{
+  font-family:var(--tafel);font-weight:700;color:var(--emaille);
+  font-variant-numeric:tabular-nums;margin-right:10px;
+}
+
+/* ------------------------------------------------------------------
+   Über uns
+   ------------------------------------------------------------------ */
+
+.zweispalt{display:grid;grid-template-columns:1.55fr 1fr;gap:64px;align-items:start}
+.schild + .zweispalt{margin-top:52px}
+.prosa p+p{margin-top:20px}
+.prosa p{max-width:62ch}
+
+.stichworte{border-top:2px solid var(--nacht);padding-top:22px}
+.stichworte h3{
+  font-family:var(--grotesk);font-size:16px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--dampfgrau);margin-bottom:20px;
+}
+.stichworte dl{display:grid;grid-template-columns:auto 1fr;gap:14px 22px;font-size:17px}
+.stichworte dt{
+  font-family:var(--tafel);color:var(--emaille);font-weight:700;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.stichworte dd{color:var(--tinte)}
+.fussnote{
+  margin-top:24px;padding-top:16px;border-top:1px solid var(--linie);
+  font-size:16px;color:var(--dampfgrau);
+}
+
+/* ------------------------------------------------------------------
+   Fahrkarte – Mitglied werden
+   ------------------------------------------------------------------ */
+
+.fahrkarte{
+  position:relative;background:#fff;border:1px solid var(--linie);
+  padding:44px 48px 44px 76px;
+  display:grid;grid-template-columns:1fr auto;gap:28px 44px;align-items:center;
+}
+/* Perforation wie am Abriss einer Fahrkarte */
+.fahrkarte::before{
+  content:"";position:absolute;left:38px;top:20px;bottom:20px;width:3px;
+  background:radial-gradient(circle,var(--linie) 0 1.6px,transparent 2px) center top/3px 10px repeat-y;
+}
+.fahrkarte .aufdruck{
+  font-family:var(--tafel);font-size:16px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dampfgrau);margin-bottom:16px;
+}
+.fahrkarte p{max-width:56ch}
+.fahrkarte .nebensatz{font-size:17px;color:var(--dampfgrau);margin-top:16px}
+
+/* ------------------------------------------------------------------
+   Kontakt
+   ------------------------------------------------------------------ */
+
+.kontaktfelder{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0 44px;
+}
+.kontaktfeld{border-top:2px solid var(--nacht);padding:22px 0 0}
+.kontaktfeld h2{font-size:21px;margin-bottom:14px}
+.kontaktfeld address{font-style:normal;line-height:1.7}
+.kontaktfeld .zeile{margin-top:10px}
+.kontaktfeld .bezeichnung{
+  font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--dampfgrau);
+}
+
+/* ------------------------------------------------------------------
+   Rechtstexte
+   ------------------------------------------------------------------ */
+
+.rechtstext{max-width:70ch}
+.rechtstext h2{font-size:23px;margin-top:44px;padding-top:22px;border-top:1px solid var(--linie)}
+.rechtstext h2:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.rechtstext p{margin-top:14px}
+
+/* ------------------------------------------------------------------
+   Fehlerseite
+   ------------------------------------------------------------------ */
+
+.fehlerseite{padding:96px 0 110px}
+.signal{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.signal .lampe{
+  width:30px;height:30px;border-radius:50%;background:var(--signalrot);flex:none;
+  box-shadow:0 0 0 6px rgba(176,54,44,.13);
+}
+.signal .begriff{
+  font-family:var(--tafel);font-size:17px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dampfgrau);
+}
+
+/* ------------------------------------------------------------------
+   Fußbereich
+   ------------------------------------------------------------------ */
+
+footer{background:var(--nacht);color:#cdd8e2;margin-top:110px}
+footer a{color:#e6edf3}
+footer .oben{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;
+  padding:64px 0 46px;align-items:start;
+}
+footer .lok{width:150px;margin-bottom:20px;opacity:.92}
+footer .name{font-family:var(--display);color:#fff;font-size:21px;line-height:1.35}
+footer .anschrift{margin-top:14px;font-style:normal;color:#a8bbcc;font-size:17px;line-height:1.75}
+footer .spalte{display:flex;flex-direction:column;align-items:flex-start;gap:11px;font-size:17px}
+footer .spaltenkopf{
+  font-size:16px;letter-spacing:.15em;text-transform:uppercase;
+  color:#8fa2b3;margin-bottom:5px;
+}
+footer .spalte a{text-decoration:none;border-bottom:1px solid transparent}
+footer .spalte a:hover{border-bottom-color:#e6edf3}
+footer .unten{
+  border-top:1px solid rgba(255,255,255,.16);padding:22px 0 42px;
+  font-size:16px;color:#8fa2b3;
+}
+
+/* ------------------------------------------------------------------
+   Schmale Bildschirme
+   ------------------------------------------------------------------ */
+
+@media (max-width:900px){
+  :root{--rand:24px}
+  .zweispalt{grid-template-columns:1fr;gap:44px}
+  .fahrkarte{grid-template-columns:1fr;padding:36px 32px 36px 62px}
+  .anrisse{gap:0 32px}
+  footer .oben{grid-template-columns:1fr 1fr;gap:40px}
+  footer .vereinsblock{grid-column:1/-1}
+}
+
+@media (max-width:680px){
+  body{font-size:17px}
+  .held{padding:56px 0 52px}
+  .abschnitt{padding:56px 0}
+  .seitenkopf{padding:48px 0 0}
+  .schild{padding:32px 26px}
+  .schild::before,.schild::after{inset:8px}
+  .tafel .kopf{display:none}
+  .tafel .reihe{grid-template-columns:1fr;gap:8px;padding:24px 0}
+  .tafel .datum .jahr{display:inline;margin-left:8px}
+  .tafel .verweis{text-align:left}
+  .streckenband li{grid-template-columns:60px 30px 1fr;column-gap:14px}
+  .anrisse{grid-template-columns:1fr;gap:0}
+  .anriss{padding-bottom:28px}
+  .fahrkarte{padding:32px 24px 32px 54px}
+  .fahrkarte::before{left:26px}
+  footer{margin-top:72px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+
+/* ------------------------------------------------------------------
+   Druck
+   ------------------------------------------------------------------ */
+
+@media print{
+  body{background:#fff;font-size:12pt}
+  nav.haupt,.aktionen,.sprungmarke{display:none}
+  footer{background:none;color:#000;margin-top:24pt}
+  footer a,footer .name,footer .anschrift{color:#000}
+  .schild{background:none;color:#000;border:2px solid #000}
+  .schild .ort,.schild .wann,.schild .richtung{color:#000}
+  .schild::before,.schild::after{display:none}
+}

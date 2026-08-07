@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SVS – Schienenverkehrsfreunde Ffm.-Schwanheim">
+  <title>SVS</title>
+  <rect width="64" height="64" rx="10" fill="#1d4e79"/>
+  <rect x="5.5" y="5.5" width="53" height="53" rx="6.5" fill="none" stroke="#ffffff" stroke-width="2.5" opacity=".9"/>
+  <text x="32" y="33" fill="#ffffff"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="23" font-weight="700" letter-spacing="0.5"
+        text-anchor="middle" dominant-baseline="central">SVS</text>
+</svg>

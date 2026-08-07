@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PRÜFEN: Platzhalter-Domain durch die tatsächliche Adresse ersetzen, sobald diese feststeht -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.svs-schwanheim.de/</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/wanderfahrt.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/ueber-uns.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/termine.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/mitglied-werden.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/kontakt.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/impressum.html</loc>
+  </url>
+  <url>
+    <loc>https://www.svs-schwanheim.de/datenschutz.html</loc>
+  </url>
+</urlset>
