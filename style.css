@@ -339,8 +339,13 @@ figure.bild figcaption .quelle{
   font-variant-numeric:tabular-nums;
 }
 
-/* Zwei Bilder nebeneinander – etwa Regen und Sonnenschein im Vergleich */
+/* Zwei Bilder nebeneinander – etwa Regen und Sonnenschein im Vergleich.
+   Beide Bilder bekommen dasselbe Seitenverhältnis (3:2, das klassische
+   Fotoformat), damit die Haarlinien der Bildunterschriften auf einer Höhe
+   stehen. Ohne das säßen sie je nach Originalformat versetzt – bei einer
+   Gestaltung aus Linien fällt das sofort auf. */
 .bildpaar{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.bildpaar figure.bild img{aspect-ratio:3/2;object-fit:cover}
 
 /* Mehrteilige Abbildung (Bildfolge), etwa ein Cartoon aus zwei Hälften:
    nur das erste Feld bekommt die kräftige Linie, dazwischen eine Haarlinie. */
@@ -352,6 +357,12 @@ figure.bild.folge img + img{border-top:1px solid var(--linie)}
 }
 .archivstueck + .archivstueck{
   margin-top:64px;border-top:1px solid var(--linie);padding-top:64px;
+}
+/* Weiterführende Schaltflächen unter dem letzten Beitrag brauchen dieselbe
+   Zäsur wie die Beiträge untereinander – sonst kleben sie an der
+   Bildunterschrift und sehen aus, als gehörten sie zum Bild. */
+.archivstueck + .aktionen{
+  margin-top:64px;border-top:1px solid var(--linie);padding-top:44px;
 }
 .archivstueck .prosa h2{margin-bottom:18px}
 .archivstueck .prosa .marke{margin-bottom:14px}
