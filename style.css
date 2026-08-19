@@ -369,9 +369,13 @@ figure.bild.breit figcaption{max-width:74ch}
 /* Weiterführende Schaltflächen unter dem letzten Beitrag brauchen dieselbe
    Zäsur wie die Beiträge untereinander – sonst kleben sie an der
    Bildunterschrift und sehen aus, als gehörten sie zum Bild. */
-.archivstueck + .aktionen{
+.archivstueck + .aktionen,
+figure.bild.abschluss + .aktionen{
   margin-top:64px;border-top:1px solid var(--linie);padding-top:44px;
 }
+/* Abschlussbild am Fuß der Seite: die kräftige Linie über dem Bild trennt
+   bereits, deshalb hier nur Abstand und keine zusätzliche Haarlinie. */
+figure.bild.abschluss{margin-top:72px}
 .archivstueck .prosa h2{margin-bottom:18px}
 .archivstueck .prosa .marke{margin-bottom:14px}
 
