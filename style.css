@@ -315,6 +315,48 @@ h3{font-size:20px;line-height:1.3}
 .anriss .weiter{margin-top:auto;padding-top:14px;align-self:flex-start}
 
 /* ------------------------------------------------------------------
+   Bilder aus dem Vereinsarchiv
+
+   Wie eine Abbildung in einer Bahn-Drucksache: das Bild steht für sich,
+   darunter trennt eine Haarlinie die Bildunterschrift ab. Die Quellen-
+   angabe (Datum, Herkunft) steht in der Monospace-Schrift wie die
+   Fahrplanzeiten. Kein Rahmen, kein Schatten, keine Rundung.
+   ------------------------------------------------------------------ */
+
+figure.bild{margin:0}
+figure.bild img{
+  display:block;width:100%;height:auto;
+  border-top:2px solid var(--nacht);
+}
+figure.bild figcaption{
+  border-top:1px solid var(--linie);
+  margin-top:14px;padding-top:12px;
+  font-size:17px;line-height:1.55;color:var(--tinte);max-width:62ch;
+}
+figure.bild figcaption .quelle{
+  display:block;margin-top:8px;
+  font-family:var(--tafel);font-size:16px;color:var(--dampfgrau);
+  font-variant-numeric:tabular-nums;
+}
+
+/* Zwei Bilder nebeneinander – etwa Regen und Sonnenschein im Vergleich */
+.bildpaar{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* Mehrteilige Abbildung (Bildfolge), etwa ein Cartoon aus zwei Hälften:
+   nur das erste Feld bekommt die kräftige Linie, dazwischen eine Haarlinie. */
+figure.bild.folge img + img{border-top:1px solid var(--linie)}
+
+/* Beitrag im Archiv: Bild und erzählender Text nebeneinander */
+.archivstueck{
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+}
+.archivstueck + .archivstueck{
+  margin-top:64px;border-top:1px solid var(--linie);padding-top:64px;
+}
+.archivstueck .prosa h2{margin-bottom:18px}
+.archivstueck .prosa .marke{margin-bottom:14px}
+
+/* ------------------------------------------------------------------
    Über uns
    ------------------------------------------------------------------ */
 
@@ -431,6 +473,8 @@ footer .unten{
 @media (max-width:900px){
   :root{--rand:24px}
   .zweispalt{grid-template-columns:1fr;gap:44px}
+  .archivstueck{grid-template-columns:1fr;gap:36px}
+  .archivstueck + .archivstueck{margin-top:52px;padding-top:52px}
   .fahrkarte{grid-template-columns:1fr;padding:36px 32px 36px 62px}
   .anrisse{gap:0 32px}
   footer .oben{grid-template-columns:1fr 1fr;gap:40px}
@@ -451,6 +495,7 @@ footer .unten{
   .streckenband li{grid-template-columns:60px 30px 1fr;column-gap:14px}
   .anrisse{grid-template-columns:1fr;gap:0}
   .anriss{padding-bottom:28px}
+  .bildpaar{grid-template-columns:1fr;gap:36px}
   .fahrkarte{padding:32px 24px 32px 54px}
   .fahrkarte::before{left:26px}
   footer{margin-top:72px}
@@ -473,4 +518,8 @@ footer .unten{
   .schild{background:none;color:#000;border:2px solid #000}
   .schild .ort,.schild .wann,.schild .richtung{color:#000}
   .schild::before,.schild::after{display:none}
+  /* Bilder nicht über einen Seitenumbruch hinweg zerreißen */
+  figure.bild{break-inside:avoid}
+  figure.bild figcaption .quelle{color:#000}
+  .archivstueck,.bildpaar{grid-template-columns:1fr;gap:20pt}
 }
