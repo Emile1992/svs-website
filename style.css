@@ -351,6 +351,14 @@ figure.bild figcaption .quelle{
    nur das erste Feld bekommt die kräftige Linie, dazwischen eine Haarlinie. */
 figure.bild.folge img + img{border-top:1px solid var(--linie)}
 
+/* Beitrag über die volle Satzbreite: erst der Text, darunter die Bilder.
+   Für Beiträge mit zwei Bildern – nebeneinander wirken sie als Gegenüberstellung,
+   und der Text braucht keine halbe Spalte leer stehen zu lassen. */
+.archivstueck.breit{grid-template-columns:1fr;gap:40px}
+
+/* Abbildung über die volle Satzbreite, als Auftakt einer Seite */
+figure.bild.breit figcaption{max-width:74ch}
+
 /* Beitrag im Archiv: Bild und erzählender Text nebeneinander */
 .archivstueck{
   display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
