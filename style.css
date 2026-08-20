@@ -347,10 +347,6 @@ figure.bild figcaption .quelle{
 .bildpaar{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .bildpaar figure.bild img{aspect-ratio:3/2;object-fit:cover}
 
-/* Mehrteilige Abbildung (Bildfolge), etwa ein Cartoon aus zwei Hälften:
-   nur das erste Feld bekommt die kräftige Linie, dazwischen eine Haarlinie. */
-figure.bild.folge img + img{border-top:1px solid var(--linie)}
-
 /* Beitrag über die volle Satzbreite: erst der Text, darunter die Bilder.
    Für Beiträge mit zwei Bildern – nebeneinander wirken sie als Gegenüberstellung,
    und der Text braucht keine halbe Spalte leer stehen zu lassen. */
