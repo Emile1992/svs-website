@@ -350,30 +350,30 @@ figure.bild figcaption .quelle{
 /* Beitrag über die volle Satzbreite: erst der Text, darunter die Bilder.
    Für Beiträge mit zwei Bildern – nebeneinander wirken sie als Gegenüberstellung,
    und der Text braucht keine halbe Spalte leer stehen zu lassen. */
-.archivstueck.breit{grid-template-columns:1fr;gap:40px}
+.bildstueck.breit{grid-template-columns:1fr;gap:40px}
 
 /* Abbildung über die volle Satzbreite, als Auftakt einer Seite */
 figure.bild.breit figcaption{max-width:74ch}
 
 /* Beitrag im Archiv: Bild und erzählender Text nebeneinander */
-.archivstueck{
+.bildstueck{
   display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
 }
-.archivstueck + .archivstueck{
+.bildstueck + .bildstueck{
   margin-top:64px;border-top:1px solid var(--linie);padding-top:64px;
 }
 /* Weiterführende Schaltflächen unter dem letzten Beitrag brauchen dieselbe
    Zäsur wie die Beiträge untereinander – sonst kleben sie an der
    Bildunterschrift und sehen aus, als gehörten sie zum Bild. */
-.archivstueck + .aktionen,
+.bildstueck + .aktionen,
 figure.bild.abschluss + .aktionen{
   margin-top:64px;border-top:1px solid var(--linie);padding-top:44px;
 }
 /* Abschlussbild am Fuß der Seite: die kräftige Linie über dem Bild trennt
    bereits, deshalb hier nur Abstand und keine zusätzliche Haarlinie. */
 figure.bild.abschluss{margin-top:72px}
-.archivstueck .prosa h2{margin-bottom:18px}
-.archivstueck .prosa .marke{margin-bottom:14px}
+.bildstueck .prosa h2{margin-bottom:18px}
+.bildstueck .prosa .marke{margin-bottom:14px}
 
 /* ------------------------------------------------------------------
    Über uns
@@ -492,8 +492,8 @@ footer .unten{
 @media (max-width:900px){
   :root{--rand:24px}
   .zweispalt{grid-template-columns:1fr;gap:44px}
-  .archivstueck{grid-template-columns:1fr;gap:36px}
-  .archivstueck + .archivstueck{margin-top:52px;padding-top:52px}
+  .bildstueck{grid-template-columns:1fr;gap:36px}
+  .bildstueck + .bildstueck{margin-top:52px;padding-top:52px}
   .fahrkarte{grid-template-columns:1fr;padding:36px 32px 36px 62px}
   .anrisse{gap:0 32px}
   footer .oben{grid-template-columns:1fr 1fr;gap:40px}
@@ -540,5 +540,5 @@ footer .unten{
   /* Bilder nicht über einen Seitenumbruch hinweg zerreißen */
   figure.bild{break-inside:avoid}
   figure.bild figcaption .quelle{color:#000}
-  .archivstueck,.bildpaar{grid-template-columns:1fr;gap:20pt}
+  .bildstueck,.bildpaar{grid-template-columns:1fr;gap:20pt}
 }

@@ -91,19 +91,19 @@
 
       <!-- HIER BEARBEITEN: Archiv-Beiträge
 
-           Einen weiteren Beitrag ergänzen: einen ganzen "archivstueck"-Block
+           Einen weiteren Beitrag ergänzen: einen ganzen "bildstueck"-Block
            kopieren, einfügen und Bild, Überschrift und Text austauschen.
 
            Es gibt zwei Bauformen:
-           - <div class="archivstueck">        ein Bild links, Text rechts
-           - <div class="archivstueck breit">  Text oben, zwei Bilder nebeneinander
+           - <div class="bildstueck">        ein Bild links, Text rechts
+           - <div class="bildstueck breit">  Text oben, zwei Bilder nebeneinander
 
            Jedes Bild gehört nach bilder/ und braucht ein alt-Attribut (Beschreibung
            für blinde Leser) sowie width und height in Pixeln, damit die Seite beim
            Laden nicht springt. Vorher die EXIF-Daten entfernen – Kameras schreiben
            dort teils GPS-Koordinaten hinein. -->
 
-      <div class="archivstueck breit">
+      <div class="bildstueck breit">
         <div class="prosa">
           <p class="marke">Ortsgeschichte</p>
           <h2>Zwei Bahnhöfe</h2>
@@ -141,7 +141,7 @@
           </figure>
         </div>
       </div>
-      <div class="archivstueck breit">
+      <div class="bildstueck breit">
         <div class="prosa">
           <p class="marke">Wo wir uns treffen</p>
           <h2>Der Vereinsraum</h2>
@@ -174,7 +174,7 @@
           </figure>
         </div>
       </div>
-      <div class="archivstueck">
+      <div class="bildstueck">
         <figure class="bild">
           <img src="bilder/vereinszeichen.jpg" width="1400" height="875" loading="lazy"
                alt="Gedrucktes Vereinszeichen: eine kleine Dampflokomotive im Seitenriss,
@@ -192,20 +192,21 @@
           <p>Sie gilt immer noch als das Symbol der Eisenbahn schlechthin – die Dampflok.
             Unser Vereinszeichen ziert eine kleine, dreifach gekuppelte Nassdampf-Tenderlok.
             Obwohl schon um 1900 leistungsstärkere Rangierloks aufkamen, fand diese Bauform
-            noch viele Jahrzehnte ihr Auskommen, auch bei Industriebetrieben in Frankfurt.</p>
+            noch viele Jahrzehnte ihr Auskommen – bei Privatbahnen ebenso wie bei
+            Industriebetrieben, auch in Frankfurt.</p>
           <p>Die Frakturschrift stammt aus derselben Zeit. Wir haben sie dem Schwanheimer
             Stationsschild entlehnt, das im Hof unseres Vereinsraums hängt.</p>
         </div>
       </div>
-      <div class="archivstueck breit">
+      <div class="bildstueck breit">
         <div class="prosa">
           <p class="marke">Und heute</p>
           <h2>Am Wappenbaum</h2>
-          <p>Am Wappenbaum der Schwanheimer Vereine hängt unser Zeichen links außen. Der
-            Baum steht nah genug an der Endstation, dass er sich in den Scheiben der
-            Straßenbahn spiegelt. Unser Schaukasten hängt seit fünfzig Jahren an seinem
-            angestammten Platz in der Schwarzbachstraße 21 und benötigt kein auffälliges
-            Logo.</p>
+          <p>Am Wappenbaum der Schwanheimer Vereine hängt unser Zeichen links außen, an der
+            Ecke Schwanheimer Bahnstraße – die Straße trägt den Namen bis heute, der Bahnhof
+            ist längst weg. Der Baum steht nah genug an der Endstation, dass er sich in den
+            Scheiben der Straßenbahn spiegelt. Und unser <a href="ueber-uns.html">Schaukasten in der
+            Schwarzbachstraße</a> kommt seit jeher ganz ohne auffälliges Logo aus.</p>
           <p>Natürlich hat auch bei uns die Moderne Einzug gehalten, bis hin zu den
             Schrifttypen. Schließlich ist es der Kontrast von Altem und Neuem, der die
             Beschäftigung mit der Eisenbahn spannend hält.</p>
@@ -222,19 +223,18 @@
             </figcaption>
           </figure>
           <figure class="bild">
-            <img src="bilder/wappenbaum-vereinszeichen.jpg" width="1500" height="1000" loading="lazy"
-                 alt="Nahaufnahme am Wappenbaum: Unter dem Straßenschild „Schwanheimer
-                      Bahnstraße“ hängt das weiße Schild der Schienenverkehrsfreunde mit der
-                      Dampflok und dem Vereinsnamen in Frakturschrift, umgeben von den
-                      Schildern anderer Schwanheimer Vereine.">
-            <figcaption>Dasselbe Zeichen am Baum – unter den Straßenschildern, von denen eines
-              noch an den alten Bahnhof erinnert.
+            <img src="bilder/wappenbaum-vereinszeichen.jpg" width="1500" height="843" loading="lazy"
+                 alt="Ein weißes Emailschild am Mast des Wappenbaums vor blauem Himmel: die
+                      Dampflok des Vereinszeichens, darüber in Frakturschrift
+                      „Schienenverkehrsfreunde Frankfurt (M)-Schwanheim e. V.“ Daneben das
+                      Schild des Tennisclubs Schwanheim.">
+            <figcaption>Dieselbe Lok, dieselbe Schrift – nur eben in Email statt auf Papier.
               <span class="quelle">Ecke Schwanheimer Bahnstraße · August 2026</span>
             </figcaption>
           </figure>
         </div>
       </div>
-      <div class="archivstueck">
+      <div class="bildstueck">
         <figure class="bild">
           <img src="bilder/cartoon-diaprojektor.jpg" width="996" height="1100" loading="lazy"
                alt="Gezeichneter Cartoon in zwei Feldern. Oben sitzen zwei Vereinsmitglieder
@@ -245,10 +245,7 @@
                     ein vierter gemütlich sitzend zusieht.">
           <figcaption>Der Spendenaufruf in der Vereinszeitung – und die Vorstellung davon,
             wie der Strom künftig erzeugt werden könnte.
-            <!-- PRÜFEN: Wer hat den Cartoon gezeichnet? Die Originalvorlage kam über
-                 Andreas Illert – falls er der Zeichner ist, gehört eine Urheberangabe
-                 unter das Bild. -->
-            <span class="quelle">Originalzeichnung zur Mitglieder-Information 4/1998</span>
+            <span class="quelle">Zeichnung: Andreas Illert · Mitglieder-Information 4/1998</span>
           </figcaption>
         </figure>
         <div class="prosa">
