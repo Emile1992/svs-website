@@ -95,8 +95,13 @@
            kopieren, einfügen und Bild, Überschrift und Text austauschen.
 
            Es gibt zwei Bauformen:
-           - <div class="bildstueck">        ein Bild links, Text rechts
-           - <div class="bildstueck breit">  Text oben, zwei Bilder nebeneinander
+           - <div class="bildstueck">        Text links, ein Bild rechts
+           - <div class="bildstueck breit">  Text oben, zwei Bilder darunter
+
+           In beiden Fällen steht der Text im Quelltext VOR dem Bild. Das ist wichtig:
+           Am Handy stehen die Blöcke untereinander, und dort soll die Überschrift
+           zuerst kommen – nicht ein Bild mit einer Bildunterschrift, die noch niemand
+           einordnen kann.
 
            Jedes Bild gehört nach bilder/ und braucht ein alt-Attribut (Beschreibung
            für blinde Leser) sowie width und height in Pixeln, damit die Seite beim
@@ -174,17 +179,6 @@
         </div>
       </div>
       <div class="bildstueck">
-        <figure class="bild">
-          <img src="bilder/vereinszeichen.jpg" width="1400" height="875" loading="lazy"
-               alt="Gedrucktes Vereinszeichen: eine kleine Dampflokomotive im Seitenriss,
-                    darüber in Frakturschrift „Schienenverkehrsfreunde Frankfurt (M)-Schwanheim
-                    e. V.“">
-          <figcaption>Der Vereinsname steht hier noch ausgeschrieben: „Frankfurt
-            (M)-Schwanheim“, wo wir ihn heute zu „Ffm.“ verkürzen.
-            <!-- PRÜFEN: Aus welchem Jahr stammt diese Vorlage? Bei Peter erfragen. -->
-            <span class="quelle">Archiv SVS</span>
-          </figcaption>
-        </figure>
         <div class="prosa">
           <p class="marke">Gedrucktes</p>
           <h2>Das Vereinszeichen</h2>
@@ -196,6 +190,17 @@
           <p>Die Frakturschrift stammt aus derselben Zeit. Wir haben sie dem Schwanheimer
             Stationsschild entlehnt, das im Hof unseres Vereinsraums hängt.</p>
         </div>
+        <figure class="bild">
+          <img src="bilder/vereinszeichen.jpg" width="1400" height="875" loading="lazy"
+               alt="Gedrucktes Vereinszeichen: eine kleine Dampflokomotive im Seitenriss,
+                    darüber in Frakturschrift „Schienenverkehrsfreunde Frankfurt (M)-Schwanheim
+                    e. V.“">
+          <figcaption>Der Vereinsname steht hier noch ausgeschrieben: „Frankfurt
+            (M)-Schwanheim“, wo wir ihn heute zu „Ffm.“ verkürzen.
+            <!-- PRÜFEN: Aus welchem Jahr stammt diese Vorlage? Bei Peter erfragen. -->
+            <span class="quelle">Archiv SVS</span>
+          </figcaption>
+        </figure>
       </div>
       <div class="bildstueck breit">
         <div class="prosa">
@@ -234,6 +239,17 @@
         </div>
       </div>
       <div class="bildstueck">
+        <div class="prosa">
+          <p class="marke">Vereinsgeschichte</p>
+          <h2>Der Diaprojektor</h2>
+          <p>Im Jahr 1998 ging der Diaprojektor des Vereins kaputt. Leere Kassen waren auch
+            damals schon ein Thema. Also warb die Vereinszeitung – die „Mitglieder-Information“,
+            kurz „MI“ – mit einem Cartoon bei den Mitgliedern um Spenden für ein
+            Ersatzgerät.</p>
+          <p>Ein Diaprojektor gehört bis heute zur Grundausstattung unserer Vereinsabende,
+            inzwischen ergänzt um Beamer und DVD-Player. Wer selbst etwas zeigen möchte,
+            findet bei uns also alles vor.</p>
+        </div>
         <figure class="bild">
           <img src="bilder/cartoon-diaprojektor.jpg" width="996" height="1100" loading="lazy"
                alt="Gezeichneter Cartoon in zwei Feldern. Oben sitzen zwei Vereinsmitglieder
@@ -247,17 +263,6 @@
             <span class="quelle">Zeichnung: Andreas Illert · Mitglieder-Information 4/1998</span>
           </figcaption>
         </figure>
-        <div class="prosa">
-          <p class="marke">Vereinsgeschichte</p>
-          <h2>Der Diaprojektor</h2>
-          <p>Im Jahr 1998 ging der Diaprojektor des Vereins kaputt. Leere Kassen waren auch
-            damals schon ein Thema. Also warb die Vereinszeitung – die „Mitglieder-Information“,
-            kurz „MI“ – mit einem Cartoon bei den Mitgliedern um Spenden für ein
-            Ersatzgerät.</p>
-          <p>Ein Diaprojektor gehört bis heute zur Grundausstattung unserer Vereinsabende,
-            inzwischen ergänzt um Beamer und DVD-Player. Wer selbst etwas zeigen möchte,
-            findet bei uns also alles vor.</p>
-        </div>
       </div>
 
       <!-- ENDE BEARBEITEN: Archiv-Beiträge -->
