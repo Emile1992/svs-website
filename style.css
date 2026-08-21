@@ -518,6 +518,9 @@ footer .unten{
   .fahrkarte{padding:32px 24px 32px 54px}
   .fahrkarte::before{left:26px}
   footer{margin-top:72px}
+  /* Einspaltig, sobald zwei Spalten zu eng werden: „Datenschutzerklärung“ ist ein
+     langes, unteilbares Wort und sprengte sonst das Raster nach rechts. */
+  footer .oben{grid-template-columns:1fr;gap:34px}
 }
 
 @media (prefers-reduced-motion:reduce){
