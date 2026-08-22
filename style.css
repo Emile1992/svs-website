@@ -38,6 +38,9 @@ body{
   text-rendering:optimizeLegibility;
 }
 
+/* verhindert Schusterjungen im Flattersatz; ältere Browser ignorieren es folgenlos */
+p{text-wrap:pretty}
+
 a{color:var(--emaille);text-underline-offset:.18em;text-decoration-thickness:1px}
 a:hover{color:var(--nacht)}
 a:focus-visible{outline:3px solid var(--signalrot);outline-offset:3px}
@@ -45,12 +48,6 @@ a:focus-visible{outline:3px solid var(--signalrot);outline-offset:3px}
 img{max-width:100%;height:auto;display:block}
 
 .rahmen{max-width:var(--satz);margin:0 auto;padding:0 var(--rand)}
-
-/* Nur für Screenreader */
-.nur-vorlesen{
-  position:absolute;width:1px;height:1px;overflow:hidden;
-  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
-}
 
 /* Sprungmarke zum Inhalt */
 .sprungmarke{
@@ -95,7 +92,11 @@ nav.haupt a[aria-current="page"]{
    Überschriften und Abschnitte
    ------------------------------------------------------------------ */
 
-h1,h2,h3{font-family:var(--display);color:var(--nacht);font-weight:700}
+h1,h2,h3{
+  font-family:var(--display);color:var(--nacht);font-weight:700;
+  /* verhindert einzeln stehende Wörter in der letzten Zeile */
+  text-wrap:balance;
+}
 
 h1{
   font-size:clamp(34px,4.8vw,52px);line-height:1.1;letter-spacing:-.012em;
@@ -113,8 +114,6 @@ h3{font-size:20px;line-height:1.3}
 .marke::before{
   content:"";width:26px;height:2px;background:var(--emaille);flex:none;
 }
-.marke.hell{color:#9fb4c6}
-.marke.hell::before{background:#9fb4c6}
 
 .held{padding:82px 0 74px}
 .held .marke{margin-bottom:20px}
@@ -131,9 +130,6 @@ h3{font-size:20px;line-height:1.3}
 .abschnittkopf{margin-bottom:34px}
 .abschnittkopf .marke{margin-bottom:16px}
 .abschnittkopf .satz{color:var(--dampfgrau);margin-top:12px;max-width:60ch}
-
-/* Waagerechte Haarlinie als Gliederung */
-.trennlinie{border:0;border-top:1px solid var(--linie);margin:0}
 
 /* ------------------------------------------------------------------
    Schaltflächen
@@ -300,7 +296,7 @@ h3{font-size:20px;line-height:1.3}
    ------------------------------------------------------------------ */
 
 .anrisse{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 36px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px 36px;
 }
 .anriss{
   border-top:2px solid var(--nacht);padding:22px 0 8px;
@@ -395,10 +391,6 @@ figure.bild.abschluss{margin-top:72px}
   font-variant-numeric:tabular-nums;
 }
 .stichworte dd{color:var(--tinte)}
-.fussnote{
-  margin-top:24px;padding-top:16px;border-top:1px solid var(--linie);
-  font-size:16px;color:var(--dampfgrau);
-}
 
 /* ------------------------------------------------------------------
    Fahrkarte – Mitglied werden
@@ -419,7 +411,6 @@ figure.bild.abschluss{margin-top:72px}
   color:var(--dampfgrau);margin-bottom:16px;
 }
 .fahrkarte p{max-width:56ch}
-.fahrkarte .nebensatz{font-size:17px;color:var(--dampfgrau);margin-top:16px}
 
 /* ------------------------------------------------------------------
    Kontakt
@@ -484,6 +475,10 @@ footer .unten{
   border-top:1px solid rgba(255,255,255,.16);padding:22px 0 42px;
   font-size:16px;color:#8fa2b3;
 }
+/* Der globale Fokusrahmen ist signalrot – auf dem dunklen Fußbereich ergibt das
+   nur 2,2:1 und liegt damit unter dem Mindestwert von 3:1 für Fokusanzeigen.
+   Hier deshalb hell, in der Linkfarbe des Fußbereichs (11,5:1). */
+footer a:focus-visible{outline-color:#e6edf3}
 
 /* ------------------------------------------------------------------
    Schmale Bildschirme
@@ -495,7 +490,7 @@ footer .unten{
   .bildstueck{grid-template-columns:1fr;gap:36px}
   .bildstueck + .bildstueck{margin-top:52px;padding-top:52px}
   .fahrkarte{grid-template-columns:1fr;padding:36px 32px 36px 62px}
-  .anrisse{gap:0 32px}
+  .anrisse{gap:40px 32px}
   footer .oben{grid-template-columns:1fr 1fr;gap:40px}
   footer .vereinsblock{grid-column:1/-1}
 }
@@ -521,6 +516,12 @@ footer .unten{
   /* Einspaltig, sobald zwei Spalten zu eng werden: „Datenschutzerklärung“ ist ein
      langes, unteilbares Wort und sprengte sonst das Raster nach rechts. */
   footer .oben{grid-template-columns:1fr;gap:34px}
+  /* Am Handy ist die Textspalte nur rund 38 Zeichen breit; deutsche Komposita
+     wie „Veranstaltungsprogramm“ reißen dort sichtbare Lücken. Am Desktop ist
+     die Spalte breit genug, dort bleibt der Satz ungetrennt. Überschriften
+     werden nie getrennt – Trennstriche in der Display-Schrift wirken unruhig. */
+  p,figcaption,dd{hyphens:auto}
+  .quelle{hyphens:manual}
 }
 
 @media (prefers-reduced-motion:reduce){
