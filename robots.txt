@@ -5,5 +5,4 @@ Allow: /
 Disallow: /entwurf.html
 Disallow: /material/
 
-# PRÜFEN: Platzhalter-Domain durch die tatsächliche Adresse ersetzen, sobald diese feststeht
-Sitemap: https://www.svs-schwanheim.de/sitemap.xml
+Sitemap: https://www.svs-frankfurt-schwanheim.de/sitemap.xml
