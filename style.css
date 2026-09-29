@@ -270,6 +270,12 @@ h3{font-size:20px;line-height:1.3}
 .tafel .verweis a{text-decoration:none;border-bottom:2px solid var(--linie);padding-bottom:2px}
 .tafel .verweis a:hover{border-bottom-color:var(--emaille)}
 .nachsatz{margin-top:28px;font-size:17px;color:var(--dampfgrau);max-width:70ch}
+/* Ohne Termine verschwindet die Tafel samt Kopfzeile, und der Hinweis auf das
+   nächste Programm erscheint. So hinterlässt das Löschen des letzten Termins
+   keine leere Tabelle. Browser ohne :has() zeigen einfach beides. */
+.tafel:not(:has(.reihe)){display:none}
+.leer{font-size:19px;color:var(--tinte);padding-top:22px;border-top:2px solid var(--nacht)}
+.tafel:has(.reihe) ~ .leer{display:none}
 
 /* Platzhalter für noch fehlende Angaben */
 .platzhalter{
@@ -324,6 +330,9 @@ figure.bild figcaption .quelle{
    Gestaltung aus Linien fällt das sofort auf. */
 .bildpaar{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
 .bildpaar figure.bild img{aspect-ratio:3/2;object-fit:cover}
+/* Zwei Bilder im Breitformat: beide Vorlagen sind 16:9, der 3:2-Zuschnitt würde
+   Motive am Bildrand abschneiden (der Zug auf der Deutschherrnbrücke). */
+.bildpaar.breitbild figure.bild img{aspect-ratio:16/9}
 
 /* Beitrag über die volle Satzbreite: erst der Text, darunter die Bilder.
    Für Beiträge mit zwei Bildern – nebeneinander wirken sie als Gegenüberstellung,
@@ -344,12 +353,12 @@ figure.bild.breit figcaption{max-width:74ch}
    Zäsur wie die Beiträge untereinander – sonst kleben sie an der
    Bildunterschrift und sehen aus, als gehörten sie zum Bild. */
 .bildstueck + .aktionen,
-figure.bild.abschluss + .aktionen{
+.abschluss + .aktionen{
   margin-top:64px;border-top:1px solid var(--linie);padding-top:44px;
 }
-/* Abschlussbild am Fuß der Seite: die kräftige Linie über dem Bild trennt
-   bereits, deshalb hier nur Abstand und keine zusätzliche Haarlinie. */
-figure.bild.abschluss{margin-top:72px}
+/* Abschlussbild oder -bildpaar am Fuß der Seite: die kräftige Linie über dem
+   Bild trennt bereits, deshalb hier nur Abstand und keine zusätzliche Haarlinie. */
+.abschluss{margin-top:72px}
 .bildstueck .prosa h2{margin-bottom:18px}
 
 /* ------------------------------------------------------------------
